@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition template="/template/splitpanel-page.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:o="http://orion.agriculture-gouv.fr/standard">
+
+    <ui:param name="pageLabel" value="Accueil"/>
+
+    <ui:define name="leftContent">
+        <ui:include src="/template/left-menu.xhtml" />
+    </ui:define>
+
+    <ui:define name="rightContent">
+
+        <o:box>
+            <o:boxHeader></o:boxHeader>
+            <o:boxBody>
+
+                <o:tabPanels selected="reception" controllerRef="messagerieTPC">
+
+                    <o:tabs>
+                        <o:tab>
+                            <o:clickableTab target="reception">
+                                Boite de réception
+                            </o:clickableTab>
+                        </o:tab>
+                        <o:tab>
+                            <o:clickableTab target="archive">
+                                Archive
+                            </o:clickableTab>
+                        </o:tab>
+                        <o:tab>
+                            <o:clickableTab target="brouillon">
+                                Brouillon
+                            </o:clickableTab>
+                        </o:tab>
+                        <o:tab>
+                            <o:clickableTab target="envoyes">
+                                Messages envoyés
+                            </o:clickableTab>
+                        </o:tab>
+                        <o:tab>
+                            <o:clickableTab target="supprimes">
+                                Messages supprimés
+                            </o:clickableTab>
+                        </o:tab>
+                    </o:tabs>
+
+                    <o:tabPanel id="reception">
+                        <ui:include src="/messagerie/include/reception.xhtml"/>
+                    </o:tabPanel>
+
+                    <o:tabPanel id="archive">
+                        <ui:include src="/messagerie/include/archive.xhtml"/>
+                    </o:tabPanel>
+
+                    <o:tabPanel id="brouillon">
+                        <ui:include src="/messagerie/include/brouillon.xhtml"/>
+                    </o:tabPanel>
+
+                    <o:tabPanel id="envoyes">
+                        <ui:include src="/messagerie/include/envoyes.xhtml"/>
+                    </o:tabPanel>
+
+                    <o:tabPanel id="supprimes">
+                        <ui:include src="/messagerie/include/supprimes.xhtml"/>
+                    </o:tabPanel>
+                </o:tabPanels>
+
+            </o:boxBody>
+        </o:box>
+
+    </ui:define>
+
+    <ui:define name="javascript"/>
+
+</ui:composition>

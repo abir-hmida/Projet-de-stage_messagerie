@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition template="/template/splitpanel-page.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:o="http://orion.agriculture-gouv.fr/standard">
+
+    <ui:param name="pageLabel" value="Nouveau message"/>
+
+    <ui:define name="leftContent">
+        <ui:include src="/template/left-menu.xhtml" />
+    </ui:define>
+
+    <ui:define name="rightContent">
+
+        <o:box>
+            <o:boxHeader>
+                <h2>Nouveau message</h2>
+            </o:boxHeader>
+            <o:boxBody>
+
+                <o:form controllerRef="nouveauFC" var="courrier">
+                    <o:vcontrols>
+                        <o:row>
+                            <o:col6>
+                                <o:control>
+                                  <o:label>Distinataires</o:label>
+                                    <o:valueComplete value="#{query['name']}" id="utilisateur"  minlength="1" size="16"  controllerRef="AutoCompleteCtrl"/>
+                                </o:control>
+                            </o:col6>
+
+                        </o:row>
+                        <o:row>
+                            <o:col6>
+                                <o:control>
+                                    <o:requiredLabel for="sigleInput">Sujet</o:requiredLabel>
+                                    <o:inputText title="objet" id="sigleInput" value="#{courrier.objet}" size="16"></o:inputText>
+                                </o:control>
+                            </o:col6>
+                        </o:row>
+                        <o:row>
+                            <o:col6>
+                                <o:control id="dependentComboBoxCtrl">
+                                    <o:requiredLabel>Domaine</o:requiredLabel>
+                                </o:control>
+                            </o:col6>
+                        </o:row>
+                        <o:control>
+                            <o:inputTextarea id="message" title="nouveau_message" value="#{courrier.text}" size="10">
+                            </o:inputTextarea>
+                        </o:control>
+                        <o:control>
+                            <o:inputFile id="joindre" title=""></o:inputFile>
+                        </o:control>
+                    </o:vcontrols>
+                    <o:buttonSet>
+                        <o:saveButton ></o:saveButton>
+                        <o:dropdownButton label="Envoyer" icon="icon-envelope-alt">
+                            <o:dropdownAction label="sans demande de reponse"
+                                              outcome="message">
+                            </o:dropdownAction>
+                            <o:dropdownAction label=" avec demande de reponse"
+                                              outcome="message">
+                            </o:dropdownAction>
+                        </o:dropdownButton>
+                    </o:buttonSet>
+                </o:form>
+            </o:boxBody>
+        </o:box>
+    </ui:define>
+    <ui:define name="javascript"/>
+</ui:composition>
