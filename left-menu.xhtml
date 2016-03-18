@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:o="http://orion.agriculture-gouv.fr/standard"
+                xmlns:oc="http://orion.agriculture-gouv.fr/core"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <o:menu id="messagerieMenu"
+            controllerRef="leftMC"
+            styleClass="o-menuV nav nav-list ">
+
+        <h2>Messagerie</h2>
+
+        <o:hseparator></o:hseparator>
+
+        <o:menuItem id="boiteReceptionMenuItem" >
+            <o:menuItemClickable
+                    outcome="/index.xhtml"
+                    tooltip="Accès direct à l'onglet Boite de réception">
+                Boîte de réception
+            </o:menuItemClickable>
+        </o:menuItem>
+
+        <o:menuItem id="archiveMenuItem" >
+            <o:menuItemClickable actionRef="archiveMenuItemAction"
+                    outcome="/archive.xhtml"
+                    tooltip="Accès direct à l'onglet Archive">
+                Archive
+            </o:menuItemClickable>
+        </o:menuItem>
+
+        <o:menuItem id="brouillonMenuItem" >
+            <o:menuItemClickable
+                    outcome=""
+                    tooltip="Accès direct à l'onglet Brouillon">
+                Brouillon
+            </o:menuItemClickable>
+        </o:menuItem>
+
+        <o:menuItem id="messageEnvoyeMenuItem" >
+            <o:menuItemClickable
+                    outcome=""
+                    tooltip="Accès direct à l'onglet Messages envoyés">
+                Messages envoyés
+            </o:menuItemClickable>
+        </o:menuItem>
+
+        <o:menuItem id="messageSupprimeMenuItem" >
+            <o:menuItemClickable
+                    outcome=""
+                    tooltip="Accès direct à l'onglet Messages supprimés">
+                Messages supprimés
+            </o:menuItemClickable>
+        </o:menuItem>
+
+        <o:hseparator></o:hseparator>
+
+        <o:menuItem id="nouveauMessageMenuItem" >
+            <o:menuItemClickable
+                    outcome="nouveauMessage"
+                    tooltip="Accès au formulaire d'envoi d'un nouveau message">
+                Nouveau message
+            </o:menuItemClickable>
+        </o:menuItem>
+
+    </o:menu>
+
+</ui:composition>
