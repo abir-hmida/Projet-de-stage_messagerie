@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Cette classe action permet la navigation vers l'onglet "Archive" du tabpanel
  *
- * @author david.breant
+ * @author abir.hmida
  */
 public class ArchiveMenuItemAction extends MenuItemAction {
 
