@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:o="http://orion.agriculture-gouv.fr/standard" >
+
+
+    <ui:param name="pageLabel" value="Accueil"/>
+    <ui:define name="leftContent">
+        <ui:include src="/template/left-menu.xhtml" />
+    </ui:define>
+
+    <ui:define name="rightContent">
+        <o:box>
+        <o:boxHeader></o:boxHeader>
+        <o:boxBody>
+            <!-- body de la box -->
+            <o:buttonSet>
+                <o:button actionRef="saveAction"/>
+                <o:button actionRef="deleteAction"/>
+            </o:buttonSet>
+
+        </o:boxBody>
+        </o:box>
+    </ui:define>
+</ui:composition>

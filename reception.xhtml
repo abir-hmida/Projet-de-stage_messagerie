@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:o="http://orion.agriculture-gouv.fr/standard"
+                xmlns:oq="http://orion.agriculture-gouv.fr/query">
+
+    <o:list controllerRef="receptionLC">
+
+        <oq:queryForm controllerRef="receptionQFC" var="query">
+
+            <o:row>
+                <o:col1></o:col1>
+                <o:col5>
+                    <oq:conjunction>
+                        <oq:expression target="courrier.objet">
+                            <o:inputText id="archiveLibelleInput" value="#{query['courrier.objet']}" size="40"
+                                         title=""/>
+                        </oq:expression>
+                    </oq:conjunction>
+                </o:col5>
+                <o:col4>
+                    <oq:executeQueryButton></oq:executeQueryButton>
+                </o:col4>
+            </o:row>
+
+        </oq:queryForm>
+        <br></br>
+
+        <o:table id="courrierTable" title=""  >
+
+            <o:thead>
+                <o:tr id="entete" data="true">
+                    <o:th id="selectorCourrier">
+
+                    </o:th>
+                    <o:th id="domaineCourrier">
+                        Domaine
+                    </o:th>
+                    <o:th id="objetCourrier">
+                        Sujet
+                    </o:th>
+                    <o:th id="expediteurCourrier">
+                        Expéditeur
+                    </o:th>
+                    <o:th id="dateEnvoiCourrier">
+                        Date d'envoi
+                    </o:th>
+                </o:tr>
+            </o:thead>
+
+            <o:tbody>
+                <o:repeat maxIt="10" var="courrierDestinnataire" >
+                    <o:fragment>
+                        <o:tr data="true">
+                            <o:td headers="selectorCourrier">
+                                <o:selector/>
+                            </o:td>
+                            <o:td headers="domaineCourrier">
+                                #{courrierDestinnataire.courrier.domaine}
+                            </o:td>
+                            <o:td headers="objetCourrier">
+                                #{courrierDestinnataire.courrier.objet}
+                            </o:td>
+                            <o:td headers="expediteurCourrier">
+
+                            </o:td>
+                            <o:td headers="dateEnvoiCourrier">
+                                <o:outputDate id="dateEnvoiOutput" value="#{courrierDestinnataire.courrier.dateEnvoi}" pattern="dd/MM/yyyy" size="8"/>
+                            </o:td>
+                        </o:tr>
+                    </o:fragment>
+                </o:repeat>
+            </o:tbody>
+
+        </o:table>
+
+        <ui:include src="/common/list-pagination.xhtml"/>
+
+    </o:list>
+
+</ui:composition>
